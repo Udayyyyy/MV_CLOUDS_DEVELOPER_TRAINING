@@ -1,0 +1,14 @@
+<apex:page standardController="Contact" recordSetvar="contacts">
+  <apex:pageBlock title="Viewing Contacts">
+  <apex:form >
+    <apex:pageBlockSection >
+      <apex:pageBlockTable var="c" value="{!contacts}">
+          <apex:column value="{!c.lastname}"/>
+           <apex:column value="{!c.email}"/>                             
+      </apex:pageBlockTable>
+    </apex:pageBlockSection>
+      <apex:commandButton action="{!previous}" value="previous"/>
+     <apex:commandButton action="{!next}" value="next"/>
+  </apex:form> 
+  </apex:pageBlock>
+</apex:page>

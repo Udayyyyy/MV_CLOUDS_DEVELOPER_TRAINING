@@ -1,0 +1,7 @@
+<aura:component implements="flexipage:availableForAllPageTypes"> 
+    <aura:registerEvent name="Event_Aura8" type="c:Event_Aura8" />
+     
+    <input multiple="false" type="file" aura:id="fileInput" onchange="{!c.handleFileChange}"  style="{!'padding: 10px; border: 1px solid #ccc; border-radius: 5px; background-color: #f9f9f9;'}" />
+ 
+  
+</aura:component>

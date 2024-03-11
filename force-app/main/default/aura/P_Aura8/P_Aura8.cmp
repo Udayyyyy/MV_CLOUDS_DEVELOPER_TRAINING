@@ -1,0 +1,9 @@
+    <aura:component implements="flexipage:availableForAllPageTypes">
+        <aura:attribute name="imageSrc" type="String" />
+        
+        <c:Aura8 Event_Aura8="{!c.handleUploadedImage}" />
+        
+        <aura:if isTrue="{!not(empty(v.imageSrc))}"> 
+            <img src="{!v.imageSrc}" alt="Uploaded Image" style="max-width: 100%; padding:5%; height: auto; border: 5px solid #006597; border-radius: 10px;  background-color:aliceblue;" />
+        </aura:if>
+    </aura:component>

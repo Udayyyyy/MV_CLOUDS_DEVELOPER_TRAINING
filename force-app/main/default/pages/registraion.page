@@ -1,0 +1,29 @@
+<apex:page controller="SiteRegisterController" showHeader="false" sidebar="false">
+    <apex:form >
+        <apex:pageMessages />
+        <h2>Register</h2>
+        <p>
+            <label>Username:</label>
+            <apex:inputText value="{!username}" />
+        </p>
+        <p>
+            <label>Email:</label>
+            <apex:inputText value="{!email}" />
+        </p>
+        <p>
+            <label>Password:</label>
+            <apex:inputSecret value="{!password}" />
+        </p>
+        <p>
+            <label>Confirm Password:</label>
+            <apex:inputSecret value="{!confirmPassword}" />
+        </p>
+        <p>
+            <label>Community Nickname:</label>
+            <apex:inputText value="{!communityNickname}" />
+        </p>
+        <p>
+            <apex:commandButton action="{!registerUser}" value="Register" />
+        </p>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,213 @@
+<aura:component access="GLOBAL" controller="Aura4Apex" implements="force:appHostable,flexipage:availableForAllPageTypes">
+    <aura:attribute name="accountData" type="Account" default="{ 'sobjectType': 'Account', 'Name': ''}"/>
+<aura:attribute name="contactData" type="Contact" default="{ 'sobjectType': 'Contact', 'LastName': ''}"/>
+<aura:attribute name="eventData" type="Event" default="{ 'sobjectType': 'Event', 'Subject': '', 'StartDateTime': '', 'EndDateTime': '', 'Location': ''}"/>
+<aura:attribute name="showAccount" type="Boolean" default="true"/>
+<aura:attribute name="showContact" type="Boolean" default="false"/>
+<aura:attribute name="showEvent" type="Boolean" default="false"/>
+<aura:attribute name="setMessage" type="String"/>
+<aura:attribute name="showError" type="Boolean" default="false"/>
+<aura:attribute name="showData" type="Boolean" default="false"/>
+<aura:attribute name="message" type="String" default="NoError"/>
+<aura:attribute name="currentStep" type="Integer" default="1"/>
+
+
+    <aura:attribute name="totalpages" type="Integer" access="global" default="3" />
+    <aura:attribute name="currentpage" type="Integer" access="global" default="0" />
+    <aura:attribute name="prcount" type="Decimal" access="global" default="33.33" />
+
+
+<div class="slds-grid slds-grid--vertical forceListViewManager adapetr-config-main">
+
+    
+    <div class="slds-page-header adapetr-header">
+            <div class="slds-media">
+                <div class="slds-media__body">
+                    <c:Aura5 
+        totalpages="{!v.totalpages}" 
+        currentpage="{!v.currentpage}" 
+        prcount="{!v.prcount}" />
+                    <aura:renderIf isTrue="{!v.showAccount}">
+       
+                        <h1 class="slds-page-header__title slds-m-right--small slds-align-middle slds-truncate">Salesforce Wizard 1 of 3</h1>
+                        <p class="slds-text-title--caps slds-line-height--reset">Account Creation</p>
+ 
+                    </aura:renderIf>
+                    
+                    <aura:renderIf isTrue="{!v.showContact}">
+                        
+                        <h1 class="slds-page-header__title slds-m-right--small slds-align-middle slds-truncate">Salesforce Wizard 2 of 3</h1>
+                        <p class="slds-text-title--caps slds-line-height--reset">Contact Creation</p>
+                    </aura:renderIf>
+                    <aura:renderIf isTrue="{!v.showEvent}">
+                        <h1 class="slds-page-header__title slds-m-right--small slds-align-middle slds-truncate">Salesforce Wizard 3 of 3</h1>
+                        <p class="slds-text-title--caps slds-line-height--reset">Event Creation</p>
+                    </aura:renderIf>
+
+                    <div id="showErrorr" class="cmn_error_msg " style="display:none; text-align:center;font-weight:700">
+                        <ui:outputText value="{!v.message}"/>
+                    </div>
+                    <div id="showMessage" class="cmn_message " style="display:none;text-align:center;font-weight:700">
+                        <ui:outputText value="{!v.message}"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="adapetr-config-sec">
+            <h3 class="slds-text-heading--small">Please provide the following information. All the fields marked with  * are required.</h3>
+            <div class="slds-box slds-align--absolute-center config-table-details">
+                <table class="slds-table ">
+                    <aura:renderIf isTrue="{!v.showError}">
+                        
+                        <ui:message title="Warning" severity="warning" closable="true">
+                            Please Fill required field first </ui:message>
+                    </aura:renderIf>
+                    
+                    <aura:renderIf isTrue="{!v.showAccount}">
+        <!-- <lightning:progressIndicator currentStep="1" type="base" variant="base">
+        <lightning:progressStep label="Account" value="1"/>
+        <lightning:progressStep label="Contact" value="2"/>
+        <lightning:progressStep label="Event" value="3"/> 
+        </lightning:progressIndicator> -->
+                        <tr>
+                            <td>
+                                <div class="topSpacing">
+                                    <label class="slds-form-element__label">Name<span class="cmn_mandatory_indicator">*</span></label>
+                                </div>
+                                <div class="width">  
+                                    <ui:inputText class="slds-input" aura:id="Name" value="{!v.accountData.Name}"></ui:inputText>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td >
+                                <div class="topSpacing">
+                                    <label class="slds-form-element__label ">Account Number</label>
+                                </div>                                        
+                                <div class="width">
+                                    <ui:inputText class="slds-input "  value="{!v.accountData.AccountNumber}"></ui:inputText>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="topSpacing"> 
+                                    <label class="slds-form-element__label">Description</label>
+                                </div>
+                                
+                                <div class="width">
+                                    <ui:inputText class="slds-input" value="{!v.accountData.Description}"></ui:inputText>
+                                </div>
+                            </td>    
+                        </tr>
+                    </aura:renderIf>
+                    <aura:renderIf isTrue="{!v.showContact}">
+                                <!-- <lightning:progressIndicator currentStep="2" type="base" variant="base">
+        <lightning:progressStep label="Account" value="1"/>
+        <lightning:progressStep label="Contact" value="2"/>
+        <lightning:progressStep label="Event" value="3"/> 
+        </lightning:progressIndicator> -->
+                        <tr>
+                            <td>
+                                <div class="topSpacing">
+                                    <label class="slds-form-element__label">First Name</label>
+                                </div>
+                                <div class="width">  
+                                    <ui:inputText class="slds-input" value="{!v.contactData.FirstName}"></ui:inputText>
+                                </div>
+                            </td>
+                        </tr> 
+                        <tr>
+                            <td >
+                                <div class="topSpacing">
+                                    <label class="slds-form-element__label ">Last Name<span class="cmn_mandatory_indicator">*</span></label>
+                                </div>                                        
+                                <div class="width">
+                                    <ui:inputText class="slds-input " aura:id="LastName" value="{!v.contactData.LastName}"></ui:inputText>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="topSpacing"> 
+                                    <label class="slds-form-element__label">Phone</label>
+                                </div>
+                                
+                                <div class="width">
+                                    <ui:inputText class="slds-input" value="{!v.contactData.Phone}"></ui:inputText>
+                                </div>
+                            </td>    
+                        </tr>
+                    </aura:renderIf>  
+                   <aura:renderIf isTrue="{!v.showEvent}">
+    <!-- <lightning:progressIndicator currentStep="3" type="base" variant="base">
+        <lightning:progressStep label="Account" value="1"/>
+        <lightning:progressStep label="Contact" value="2"/>
+        <lightning:progressStep label="Event" value="3"/> 
+    </lightning:progressIndicator> -->
+    
+    <tr>
+        <td>
+            <div class="topSpacing">
+                <label class="slds-form-element__label">Event Name<span class="cmn_mandatory_indicator">*</span></label>
+            </div>
+            <div class="width">  
+                <ui:inputText class="slds-input" aura:id="EventName" value="{!v.eventData.Subject}"></ui:inputText>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div class="topSpacing">
+                <label class="slds-form-element__label">Start Date and Time<span class="cmn_mandatory_indicator">*</span></label>
+            </div>
+            <div class="width">  
+                <ui:inputDateTime class="slds-input" aura:id="EventStartDateTime" value="{!v.eventData.StartDateTime}" displayDatePicker="true" />
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div class="topSpacing">
+                <label class="slds-form-element__label">End Date and Time<span class="cmn_mandatory_indicator">*</span></label>
+            </div>
+            <div class="width">  
+                <ui:inputDateTime class="slds-input" aura:id="EventEndDateTime" value="{!v.eventData.EndDateTime}" displayDatePicker="true" />
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div class="topSpacing">
+                <label class="slds-form-element__label">Location</label>
+            </div>
+            <div class="width">  
+                <ui:inputText class="slds-input" aura:id="EventLocation" value="{!v.eventData.Location}"></ui:inputText>
+            </div>
+        </td>
+    </tr> 
+</aura:renderIf>
+</table>
+            </div>   
+            
+            <div class="slds-grid  slds-grid--align-center">
+                <aura:renderIf isTrue="{!v.showAccount}">
+                    <button class="slds-button slds-button--brand" onclick="{!c.nextTab}">Next</button>
+                </aura:renderIf>
+                
+                <aura:renderIf isTrue="{!v.showContact}">
+                    <button class="slds-button slds-button--brand" onclick="{!c.prevTab}" >Back</button>
+                    <button class="slds-button slds-button--brand" onclick="{!c.nextTab}" >Next</button>
+                </aura:renderIf>
+                
+                <aura:renderIf isTrue="{!v.showEvent}">        
+                    <button class="slds-button slds-button--brand" onclick="{!c.prevTab}" >Back</button> 
+                    <button class="slds-button slds-button--brand" onclick="{!c.saveRecord}" >Save</button>
+              
+                </aura:renderIf>
+ 
+            </div>
+        </div>
+    </div>
+</aura:component>

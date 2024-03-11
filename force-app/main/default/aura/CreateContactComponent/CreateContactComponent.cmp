@@ -1,0 +1,12 @@
+<aura:component controller="CreateContactController" implements="force:appHostable,flexipage:availableForAllPageTypes" > 
+
+
+    <lightning:input type="text" label="First Name" aura:id="Fname" required="true"/>
+    <lightning:input type="text" label="Last Name" aura:id="Lname" required="true"/>
+    <lightning:input type="number" label="Mobile" aura:id="Phone" required="true"/>
+    <lightning:input type="text" label="Email" aura:id="Email" required="true"/>
+
+    <lightning:button label="Create Contact" onclick="{!c.createContact}"/>
+    
+     
+</aura:component>

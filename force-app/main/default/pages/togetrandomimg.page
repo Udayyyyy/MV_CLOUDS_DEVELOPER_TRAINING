@@ -1,0 +1,6 @@
+<apex:page controller="myFutureButtonController">
+    <apex:form >
+        <apex:image id="theImage" value="{!$Resource.FutureButtonController}" width="200" height="200" alt="Description of image here"/>
+        <apex:commandButton action="{!FutureButtonController.ButtonController}" value="Add Random File" />
+    </apex:form>
+</apex:page>

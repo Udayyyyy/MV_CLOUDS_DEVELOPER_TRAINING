@@ -1,0 +1,14 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes">
+    <aura:attribute name="totalpages" type="Integer" access="global" default="3" />
+    <aura:attribute name="currentpage" type="Integer" access="global" default="1" />
+    <aura:attribute name="prcount" type="Decimal" access="global" default="33.33" />
+     
+    <aura:handler name="init" value="{!this}" action="{!c.init}" />
+     
+    <lightning:progressBar value="{!v.prcount * v.currentpage}" size="large" />
+     
+    <!-- <div class="slds-grid slds-grid_align-center slds-m-top_medium">
+        <lightning:button label="Previous" onclick="{!c.handlePrevious}" disabled="{!v.currentpage == 1}" class="slds-m-right_medium" />
+        <lightning:button label="Next" onclick="{!c.handleNext}" disabled="{!v.currentpage == v.totalpages}" />
+    </div> -->
+</aura:component>

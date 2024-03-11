@@ -1,0 +1,4 @@
+<aura:event type="COMPONENT">
+    <aura:attribute name="imageSrc" type="String" access="global"/>
+</aura:event>
+

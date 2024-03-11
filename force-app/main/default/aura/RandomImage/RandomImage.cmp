@@ -1,0 +1,3 @@
+<aura:component controller="AddRandomImageController" implements="flexipage:availableForAllPageTypes,force:hasRecordId">
+    <lightning:button label="Add Random Image" onclick="{!c.addRandomImage}" />
+</aura:component>

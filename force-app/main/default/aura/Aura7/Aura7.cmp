@@ -1,0 +1,36 @@
+<aura:component controller="Aura7Apex" implements="flexipage:availableForAllPageTypes">
+    <aura:attribute name="accountWrappers" type="List" />
+
+    <aura:handler name="init" value="{!this}" action="{!c.init}" />
+
+    <table class="slds-table slds-table_bordered slds-table_cell-buffer">
+        <thead>
+            <tr class="slds-line-height_reset">
+                <th class="slds-text-title_caps" scope="col">Account Name</th>
+                <th class="slds-text-title_caps" scope="col">Opportunity Name</th>  
+                <th class="slds-text-title_caps" scope="col">Contact Name</th> 
+            </tr>
+        </thead>
+        <tbody>
+            <aura:iteration items="{!v.accountWrappers}" var="wrapper">
+                <tr>
+                    <td>{!wrapper.account.Name}</td>
+                     
+                   <td> <aura:iteration items="{!wrapper.opportunities}" var="opp" >
+                            {!opp.Name}<br/>                           
+                            
+                    </aura:iteration>
+                    </td>
+
+                    <td>
+                    <aura:iteration items="{!wrapper.contacts}" var="con">
+                             {!con.Name} <br/>
+                        
+                </aura:iteration>
+                </td>
+            </tr>  
+            </aura:iteration>
+            
+        </tbody>
+    </table>
+</aura:component>

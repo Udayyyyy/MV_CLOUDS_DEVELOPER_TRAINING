@@ -1,0 +1,13 @@
+<apex:page controller="ForgotPasswordController" showHeader="false" sidebar="false">
+    <apex:form >
+        <apex:pageMessages />
+        <h2>Forgot Password</h2>
+        <p>
+            <label>Username or Email:</label>
+            <apex:inputText value="{!username}" />
+        </p>
+        <p>
+            <apex:commandButton action="{!forgotPassword}" value="Submit" />
+        </p>
+    </apex:form>
+</apex:page>

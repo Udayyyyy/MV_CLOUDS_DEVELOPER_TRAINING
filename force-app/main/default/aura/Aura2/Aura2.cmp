@@ -1,0 +1,43 @@
+<aura:component controller="Aura2" implements="force:appHostable,flexipage:availableForAllPageTypes">
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
+    <aura:attribute name="contactList" type="Contact[]" />
+    <aura:attribute name="paginationList" type="Contact[]"/>
+    <aura:attribute name="pageSize" type="Integer" default="10"/>
+    <aura:attribute name="totalSize" type="Integer"/>
+    <aura:attribute name="start" type="Integer" />
+    <aura:attribute name="end" type="Integer"/>
+
+    <table>
+        <tr> 
+            <td>
+                <br/>
+                <label for="">Search</label>
+                <br/>
+                <ui:inputText aura:id="input1" change="{!c.searchKeyChange}" required="true"/>
+            </td>
+        </tr>
+    </table>
+
+    <table class="slds-table">
+        <thead>
+            <tr style="font-weight:bold">
+                <th>Name</th>
+                <th>Email</th> 
+            </tr>
+        </thead>
+        <tbody>
+            <aura:iteration items="{!v.paginationList}" var="item">
+                <tr>
+                    <td><ui:outputText value="{!item.Name}" /></td>
+                    <td><ui:outputText value="{!item.Email}" /></td>
+                </tr>
+            </aura:iteration>
+            <tr>
+                <td colspan="2">
+                    <lightning:button label="Previous" disabled="{!v.start == 0}" onclick="{!c.previous}" />
+                    <lightning:button label="Next" disabled="{!v.end >= v.totalSize - 1}" onclick="{!c.next}" />
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</aura:component>
