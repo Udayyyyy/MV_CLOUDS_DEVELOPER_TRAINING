@@ -1,0 +1,22 @@
+<template>
+    <lightning-card title="File Uploader">
+        <div class="slds-p-around_medium">
+            <input type="file" accept="image/*" onchange={handleFileChange}></input>
+            <template if:true={uploadedFiles.data}>
+                <ul class="slds-list_vertical slds-has-dividers_around-space">
+                    <template for:each={displayedFiles} for:item="file">
+                        <li key={file.Id}>
+                            <a href={file.ContentDocument.LatestPublishedVersionId} target="_blank">{file.ContentDocument.Title}</a>
+                        </li>
+                    </template>
+                </ul>
+                <lightning-pagination
+                    active-page={currentPage}
+                    total-items={uploadedFiles.totalItemCount}
+                    page-size={pageSize}
+                    onpagechange={handlePageChange}>
+                </lightning-pagination>
+            </template>
+        </div>
+    </lightning-card>
+</template>

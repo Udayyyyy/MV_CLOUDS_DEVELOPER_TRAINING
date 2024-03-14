@@ -1,0 +1,72 @@
+<template>
+    <template if:true={showSection1}>
+        <lightning-card title="Step 1: Select Object and Records">
+            
+            <div class="slds-m-around_medium">
+                
+                <p style="font-size: larger; font-weight:bolder;">Select Object: </p>
+                <lightning-combobox
+                    label=""
+                    value={selectedObject}
+                    options={objectOptions}
+                    onchange={handleObjectChange}>
+                </lightning-combobox>
+            </div>
+ 
+            <template if:true={recordList}>
+                <template for:each={recordList} for:item="record">
+                    <div key={record.Id} class="slds-m-around_medium">
+                <lightning-input type="checkbox" label={record.Name} data-record-id={record.Id} onchange={handleRecordChange}></lightning-input>
+ </div>
+                </template>
+            </template>
+ 
+            <template if:true={errorMessage}>
+            <div class="slds-m-around_medium">
+                <p style="color: red;">{errorMessage}</p>
+            </div>
+        </template>
+
+            <div class="slds-m-around_medium">
+                <lightning-button label="Next" onclick={handleNext}></lightning-button>
+            </div>
+        </lightning-card>
+    </template>
+
+    <template if:true={showSection2}>
+        <lightning-card title="Step 2: Draft Email">
+            
+            <div class="slds-m-around_medium">
+                
+                <p style="font-size: larger; font-weight:bolder;">Email Body: </p>
+                <lightning-textarea label="" value={emailBody} onchange={handleEmailBodyChange}></lightning-textarea>
+            </div>
+                      <template if:true={errorMessage2}>
+            <div class="slds-m-around_medium error-message">
+                <p style="color: red;">{errorMessage2}</p>
+            </div>
+        </template>  
+            <div class="slds-m-around_medium">
+                <lightning-button label="Previous" onclick={handlePrevious}></lightning-button>
+                <lightning-button label="Next" onclick={handleNext}></lightning-button>
+            </div>
+        </lightning-card>
+
+    </template>
+
+    <template if:true={showSection3}>
+        <lightning-card title="Step 3: Preview and Send Email">
+             
+            <div class="slds-m-around_medium">
+                <p style="font-size: larger; font-weight:bolder;">Email Subject: </p> {emailSubject}
+                <p style="font-size: larger; font-weight:bolder;">Email Body: </p>{emailBody}
+            </div>
+
+            <!-- Step 3: Navigation Buttons -->
+            <div class="slds-m-around_medium">
+                <lightning-button label="Previous" onclick={handlePrevious}></lightning-button>
+                <lightning-button label="Send Email" onclick={handleSendEmail}></lightning-button>
+            </div>
+        </lightning-card>
+    </template>
+</template>

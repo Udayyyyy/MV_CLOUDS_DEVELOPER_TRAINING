@@ -1,0 +1,6 @@
+<template>
+    <input type="file" accept="image/*" onchange={handleFileChange} />
+    <template if:true={imageData}>
+        <c-child-component image-data={imageData}></c-child-component>
+    </template>
+</template>

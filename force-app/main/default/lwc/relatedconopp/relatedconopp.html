@@ -1,0 +1,31 @@
+<template>
+    <lightning-card title="Related Contact">
+        <div class="slds-m-around_medium">
+            <template if:true={relatedContacts}>
+                <ul>
+                    <template for:each={relatedContacts} for:item="contact">
+                        <li key={contact.Id}>{contact.Name}</li>
+                    </template>
+                </ul>
+            </template>
+            <template if:false={relatedContacts}>
+                No related contacts found.
+            </template>
+        </div>
+    </lightning-card>
+
+    <lightning-card title="Related Opportunity">
+        <div class="slds-m-around_medium">
+            <template if:true={relatedOpportunities}>
+                <ul>
+                    <template for:each={relatedOpportunities} for:item="opportunity">
+                        <li key={opportunity.Id}>{opportunity.Name}</li>
+                    </template>
+                </ul>
+            </template>
+            <template if:false={relatedOpportunities}>
+                No related opportunities found.
+            </template>
+        </div>
+    </lightning-card>
+</template>

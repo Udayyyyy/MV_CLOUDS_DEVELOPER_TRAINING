@@ -1,0 +1,9 @@
+<template>
+    <lightning-card title="Create Contact Record">
+        <div class="slds-p-around_medium">
+            <lightning-input label="Contact Name" value={contactName} onchange={handleNameChange}></lightning-input>
+            <lightning-input label="Mobile Number" type="tel" value={mobileNumber} onchange={handleMobileChange}></lightning-input>
+            <lightning-button label="Create Contact" variant="brand" onclick={oncreateContact}></lightning-button>
+        </div>
+    </lightning-card>
+</template>
