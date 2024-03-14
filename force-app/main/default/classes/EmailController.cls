@@ -29,8 +29,7 @@ public with sharing class EmailController {
             if (recordEmail != null) {
                 Messaging.SingleEmailMessage email = new Messaging.SingleEmailMessage();
                 email.setSubject(subject);
-                email.setHtmlBody(body);
-                email.setSaveAsActivity(false); // Do not save email as an activity
+                email.setHtmlBody(body); 
                 email.setToAddresses(new List<String>{recordEmail});
                 System.debug('email: ' + email.toString());
                 emailMessages.add(email);
