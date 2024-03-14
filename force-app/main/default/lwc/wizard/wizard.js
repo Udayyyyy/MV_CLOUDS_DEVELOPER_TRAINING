@@ -94,12 +94,10 @@ fetchRecordList() {
     }
 
     handlePrevious() {
-        if (this.showSection2) {
-            // Logic to go back to Section 1
+        if (this.showSection2) { 
             this.showSection2 = false;
             this.showSection1 = true;
-        } else if (this.showSection3) {
-            // Logic to go back to Section 2
+        } else if (this.showSection3) { 
             this.showSection3 = false;
             this.showSection2 = true;
         }
