@@ -47,9 +47,9 @@
                     <div id="showErrorr" class="cmn_error_msg " style="display:none; text-align:center;font-weight:700">
                         <ui:outputText value="{!v.message}"/>
                     </div>
-                    <div id="showMessage" class="cmn_message " style="display:none;text-align:center;font-weight:700">
+                    <!-- <div id="showMessage" class="cmn_message " style="display:none;text-align:center;font-weight:700">
                         <ui:outputText value="{!v.message}"/>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>

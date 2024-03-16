@@ -10,9 +10,7 @@
         
         if(showAccount == true){
             var accountName = component.find("Name").get("v.value");
-        component.set("v.totalpages", 3);
-        component.set("v.currentpage", 1);
-        component.set("v.prcount", 33.33); 
+
             console.log('accountName:::'+accountName);
             if(accountName =='' || accountName == null){
                 component.set("v.setMessage",'error');           
@@ -31,13 +29,13 @@
                 component.set("v.showContact", true);
                 component.set("v.showEvent", false); 
                 component.set("v.showError", false);
+                component.set("v.totalpages", 3);
+                component.set("v.currentpage", 1);
+                component.set("v.prcount", 33.33); 
                 
             }
         }    
         if(showContact == true){
-        component.set("v.totalpages", 3);
-        component.set("v.currentpage", 2);
-        component.set("v.prcount", 33.33); 
             var lastName = component.find("LastName").get("v.value");
             console.log('lastName:::'+lastName);
             var currentStep = component.get("v.currentStep");
@@ -57,6 +55,10 @@
                 component.set("v.showContact", false);
                 component.set("v.showEvent", true);
                 component.set("v.showError", false); 
+                        
+                component.set("v.totalpages", 3);
+                component.set("v.currentpage", 2);
+                component.set("v.prcount", 33.33); 
             }
         }   
         
@@ -112,9 +114,6 @@
     
     saveRecord : function(component, event, helper) {
         
-        component.set("v.totalpages", 3);
-        component.set("v.currentpage", 3);
-        component.set("v.prcount", 33.33); 
         helper.saveData(component, event, helper);               
     }
 })
