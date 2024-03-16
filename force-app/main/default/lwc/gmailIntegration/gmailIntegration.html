@@ -1,0 +1,29 @@
+<template> 
+    <lightning-button variant="brand" label="Send Email" icon-name="utility:email" icon-position="right" onclick={handleClick}></lightning-button>
+    
+    <template if:true={button}> 
+          <lightning-card title="Draft Email">
+            
+            <div class="slds-m-around_medium">
+                <lightning-button style="margin-left:95%;" icon-name="utility:close" variant="base" onclick={handleClose}></lightning-button>
+                
+                <p style="font-size: larger; font-weight:bolder;">To: </p>
+                <lightning-input type="text" style="margin-top: -4%;" label="" value={To} onchange={handleToChange}></lightning-input>
+
+                <p style="font-size: larger; font-weight:bolder; margin-top: 6%;">Subject: </p>
+                <lightning-input type="text" style="margin-top: -4%;" label="" value={Subject} onchange={handleSubjectChange}></lightning-input>
+                
+                <p style="font-size: larger; font-weight:bolder; margin-top: 6%;">Body: </p>
+                <lightning-textarea label="" style="margin-top: -4%;" value={Body} onchange={handleBodyChange}></lightning-textarea>
+                <div class="slds-m-around_medium">
+            <lightning-input type="file" label="Attach File" style="margin-left: -4%;" onchange={handleFileChange}></lightning-input>
+                </div>
+                <hr/>
+                <lightning-button label="Send" variant="brand" onclick={handleSendEmail}></lightning-button>
+
+            </div>
+            </lightning-card>
+ 
+
+    </template>
+</template>
