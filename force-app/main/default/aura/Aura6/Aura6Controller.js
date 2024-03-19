@@ -1,18 +1,14 @@
 ({
-    saveDetails: function(component, event, helper) {
-         
-        var imageUrl = component.find("imageUrlInput").get("v.value");
-        var backgroundColor = component.find("backgroundColorInput").get("v.value");
-        var description = component.find("descriptionInput").get("v.value");
-        var fontSize = component.find("fontSizeInput").get("v.value");
-        var fontColor = component.find("fontColorInput").get("v.value");
-         
-        component.set("v.imageUrl", imageUrl);
-        component.set("v.backgroundColor", backgroundColor);
-        component.set("v.description", description);
-        component.set("v.fontSize", fontSize);
-        component.set("v.fontColor", fontColor);
-         
-        component.set("v.showInputs", false);
-    }
+    // saveDetails : function(component, event, helper) {
+    //     // Your logic to save the details
+    //     component.set("v.showInputs", false);
+    // },
+
+    // resetToDefault : function(component, event, helper) {
+    //     component.set("v.imageUrl", component.get("v.defaultValues.imageUrl"));
+    //     component.set("v.backgroundColor", component.get("v.defaultValues.backgroundColor"));
+    //     component.set("v.description", component.get("v.defaultValues.description"));
+    //     component.set("v.fontSize", component.get("v.defaultValues.fontSize"));
+    //     component.set("v.fontColor", component.get("v.defaultValues.fontColor"));
+    // }
 })
