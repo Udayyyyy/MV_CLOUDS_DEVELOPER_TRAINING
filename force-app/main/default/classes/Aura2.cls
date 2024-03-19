@@ -1,14 +1,15 @@
 public class Aura2 {
     @AuraEnabled(cacheable=true)
-    public static List<Contact> getAccountContacts() {
-        return [SELECT Id, Name, Email FROM Contact WHERE AccountId = :'0015j00001ZBmH9AAL'];
+    public static List<Contact> getAccountContacts(String accountId) {
+        System.debug(accountId);
+        return [SELECT Id, Name, Email FROM Contact WHERE AccountId = : accountId];
     }
 
 @AuraEnabled
-public static List<Contact> getByName(String searchKey) {
+public static List<Contact> getByName(String searchKey,String accountId) {
 String name = '%' + searchKey + '%';
 
-        return [SELECT Id, Name, Email FROM Contact WHERE Name LIKE :name and AccountId = :'0015j00001ZBmH9AAL'];
+        return [SELECT Id, Name, Email FROM Contact WHERE Name LIKE :name and AccountId = : accountId];
 
 }
 }

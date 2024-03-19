@@ -1,4 +1,4 @@
-<aura:component controller="Aura2" implements="force:appHostable,flexipage:availableForAllPageTypes">
+<aura:component controller="Aura2" implements="force:appHostable, flexipage:availableForAllPageTypes, force:hasRecordId">
     <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
     <aura:attribute name="contactList" type="Contact[]" />
     <aura:attribute name="paginationList" type="Contact[]"/>
@@ -6,6 +6,7 @@
     <aura:attribute name="totalSize" type="Integer"/>
     <aura:attribute name="start" type="Integer" />
     <aura:attribute name="end" type="Integer"/>
+    
 
     <table>
         <tr> 
