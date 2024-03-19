@@ -1,2 +1,7 @@
-<design:component label="Put your Image">
+<design:component>
+    <design:attribute name="imageUrl" label="Image URL" />
+    <design:attribute name="backgroundColor" label="Background Color" />
+    <design:attribute name="description" label="Description" />
+    <design:attribute name="fontSize" label="Font Size" />
+    <design:attribute name="fontColor" label="Font Color" />
 </design:component>

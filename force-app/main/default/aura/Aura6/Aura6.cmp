@@ -4,25 +4,13 @@
     <aura:attribute name="description" type="String" />
     <aura:attribute name="fontSize" type="String" />
     <aura:attribute name="fontColor" type="String" />
-    <aura:attribute name="showInputs" type="Boolean" default="true" />
-    <div class="slds-box slds-theme_default" >
-    <aura:if isTrue="{!v.showInputs}">
-        <h2 style="margin-left: 32%;">PUT YOUR IMAGE</h2>
-        <lightning:input label="Image URL" type="url" aura:id="imageUrlInput" value="{!v.imageUrl}" />
-        <lightning:input label="Background Color" type="color" aura:id="backgroundColorInput" value="{!v.backgroundColor}" />
-        <lightning:input label="Description" type="text" aura:id="descriptionInput" value="{!v.description}" />
-        <lightning:input label="Font Size" type="number" aura:id="fontSizeInput" value="{!v.fontSize}" />
-        <lightning:input label="Font Color" type="color" aura:id="fontColorInput" value="{!v.fontColor}" />
-        <lightning:button label="Save" onclick="{!c.saveDetails}" />
-    </aura:if>
- 
-    <aura:if isTrue="{!not(v.showInputs)}">
+
+    <div class="slds-box slds-theme_default">
         <div style="{!'background-color: ' + v.backgroundColor}">
             <img src="{!v.imageUrl}" alt="Image" style="padding: 10%;" />
             <div style="{!'font-size: ' + v.fontSize +'px' + '; color: ' + v.fontColor}">
                 {!v.description}
             </div>
         </div>
-    </aura:if>
     </div>
 </aura:component>
