@@ -34,18 +34,16 @@
     },
 
     showContacts1: function(component, event, helper) {
-        var accountId = event.currentTarget.dataset.accountid;
+        var accountId = event.getSource().get("v.value");
         component.set('v.selectedAccountId1', accountId);
-        
-    console.log('Selected Account ID for Section 1: ' + accountId);
+        console.log('Selected Account ID for Section 1: ' + accountId);
         helper.fetchContacts(component, accountId, 'section1');
     },
 
     showContacts2: function(component, event, helper) {
-        var accountId = event.currentTarget.dataset.accountid;
+        var accountId = event.getSource().get("v.value");
         component.set('v.selectedAccountId2', accountId); 
-
-    console.log('Selected Account ID for Section 1: ' + accountId);
+        console.log('Selected Account ID for Section 2: ' + accountId);
         helper.fetchContacts(component, accountId, 'section2');
     },
 
@@ -75,15 +73,13 @@
             });
 
             updateAction.setCallback(this, function(response) {
- 
-                  helper.fetchContacts(component, component.get('v.selectedAccountId1'), 'section1');
-                  helper.fetchContacts(component, component.get('v.selectedAccountId2'), 'section2');
+                helper.fetchContacts(component, component.get('v.selectedAccountId1'), 'section1');
+                helper.fetchContacts(component, component.get('v.selectedAccountId2'), 'section2');
                 var state = response.getState();
                 console.log(state);  
                 if (state === "SUCCESS") {
                     component.set("v.contactsInSection1", response.getReturnValue().section1Contacts);
                     component.set("v.contactsInSection2", response.getReturnValue().section2Contacts);
-                    
                     alert("success");
                 } else if (state === "ERROR") {
                     console.log('error');

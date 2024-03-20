@@ -8,52 +8,57 @@
     <aura:attribute name="selectedAccountId1" type="String" />
     <aura:attribute name="selectedAccountId2" type="String" />
  
-<div style="width: 50%; float: left; height: 100vh; max-height: calc(100vh - 40px); overflow-y: auto; background-color: lightblue; padding: 20px; border: 5px solid white;">
-    <h1 style="font-weight:bolder; font-size: larger">Section 1</h1> 
-    <lightning:input type="text" label="Search Account" aura:id="search1" required="true" style="margin-bottom: 10px;"/>
-    <lightning:button label="Search" onclick="{!c.searchAccounts1}" />
-    <p style="font-weight:bolder; font-size: larger">Accounts: </p><br/>
+    <div style="width: 50%; float: left; height: 100vh; max-height: calc(100vh - 40px); overflow-y: auto; background-color: lightblue; padding: 20px; border: 5px solid white;">
+        <h1 style="font-weight:bolder; font-size: larger">Section 1</h1> 
+        <lightning:input type="text" label="Search Account" aura:id="search1" required="true" style="margin-bottom: 10px;"/>
+        <lightning:button label="Search" onclick="{!c.searchAccounts1}" />
+        <p style="font-weight:bolder; font-size: larger">Accounts: </p><br/>
+  
+        <lightning:select name="accountSelect1" label="Select Account" onchange="{!c.showContacts1}">
+            <option value="">--None--</option>
+            <aura:iteration items="{!v.accountsInSection1}" var="account">
+                <option value="{!account.Id}">{!account.Name}</option>
+            </aura:iteration>
+        </lightning:select>
+        
+        <p style="font-weight:bolder; font-size: larger">Contacts: </p><br/>
+         
+        <ul style="border: 3px solid rgb(0, 79, 182); border-radius: 5px; padding: 10px; " ondrop="{!c.drop}" ondragover="{!c.dragover}" data-section="section1">
+            <aura:if isTrue="{!empty(v.contactsInSection1)}"> 
+                <li style="font-size:larger;">No contacts available</li>
+                <aura:set attribute="else"> 
+                    <aura:iteration items="{!v.contactsInSection1}" var="contact">
+                        <li draggable="true" ondragstart="{!c.dragStart}" data-contactid="{!contact.Id}" style="font-size:larger;">{!contact.Name}</li>
+                    </aura:iteration>
+                </aura:set>
+            </aura:if>
+        </ul>
+    </div>
  
-    <ul>
-        <aura:iteration items="{!v.accountsInSection1}" var="account">
-            <li data-accountid="{!account.Id}" style="font-size:larger; cursor: pointer;" onclick="{!c.showContacts1}">{!account.Name}</li>
-        </aura:iteration>
-    </ul> 
-    <p style="font-weight:bolder; font-size: larger">Contacts: </p><br/>
-    <ul ondrop="{!c.drop}" ondragover="{!c.dragover}" data-section="section1">
-        <aura:if isTrue="{!empty(v.contactsInSection1)}"> 
-            <li style="font-size:larger;">No contacts available</li>
-            <aura:set attribute="else"> 
-                <aura:iteration items="{!v.contactsInSection1}" var="contact">
-                    <li draggable="true" ondragstart="{!c.dragStart}" data-contactid="{!contact.Id}" style="font-size:larger;">{!contact.Name}</li>
-                </aura:iteration>
-            </aura:set>
-        </aura:if>
-    </ul>
-</div>
- 
-<div ondrop="{!c.drop}" ondragover="{!c.dragover}" style="width: 50%; float: left; height: 100vh; max-height: calc(100vh - 40px); overflow-y: auto; background-color: lightblue; padding: 20px; border: 5px solid white;">
-    <h1 style="font-weight:bolder; font-size: larger">Section 2</h1>
-    <lightning:input type="text" label="Search Account" aura:id="search2" required="true" style="margin-bottom: 10px;"/>
-    <lightning:button label="Search" onclick="{!c.searchAccounts2}" />
-    <p style="font-weight:bolder; font-size: larger">Accounts: </p><br/>
-     
-    <ul>
-        <aura:iteration items="{!v.accountsInSection2}" var="account">
-            <li data-accountid="{!account.Id}" style="font-size:larger; cursor: pointer;" onclick="{!c.showContacts2}">{!account.Name}</li>
-        </aura:iteration>
-    </ul> 
-    <p style="font-weight:bolder; font-size: larger">Contacts: </p><br/>
-    <ul ondrop="{!c.drop}" ondragover="{!c.dragover}" data-section="section2">
-        <aura:if isTrue="{!empty(v.contactsInSection2)}"> 
-            <li style="font-size:larger;">No contacts available</li>
-            <aura:set attribute="else"> 
-                <aura:iteration items="{!v.contactsInSection2}" var="contact">
-                    <li draggable="true" ondragstart="{!c.dragStart}" data-contactid="{!contact.Id}" style="font-size: larger;">{!contact.Name}</li>
-                </aura:iteration>
-            </aura:set>
-        </aura:if>
-    </ul>
-</div>
-
+    <div ondrop="{!c.drop}" ondragover="{!c.dragover}" style="width: 50%; float: left; height: 100vh; max-height: calc(100vh - 40px); overflow-y: auto; background-color: lightblue; padding: 20px; border: 5px solid white;">
+        <h1 style="font-weight:bolder; font-size: larger">Section 2</h1>
+        <lightning:input type="text" label="Search Account" aura:id="search2" required="true" style="margin-bottom: 10px;"/>
+        <lightning:button label="Search" onclick="{!c.searchAccounts2}" />
+        <p style="font-weight:bolder; font-size: larger">Accounts: </p><br/>
+      
+        <lightning:select name="accountSelect2" label="Select Account" onchange="{!c.showContacts2}">
+            <option value="">--None--</option>
+            <aura:iteration items="{!v.accountsInSection2}" var="account">
+                <option value="{!account.Id}">{!account.Name}</option>
+            </aura:iteration>
+        </lightning:select>
+        
+        <p style="font-weight:bolder; font-size: larger">Contacts: </p><br/>
+         
+        <ul style="border: 3px solid rgb(0, 79, 182); border-radius: 5px; padding: 10px;" ondrop="{!c.drop}" ondragover="{!c.dragover}" data-section="section2">
+            <aura:if isTrue="{!empty(v.contactsInSection2)}"> 
+                <li style="font-size:larger;">No contacts available</li>
+                <aura:set attribute="else"> 
+                    <aura:iteration items="{!v.contactsInSection2}" var="contact">
+                        <li draggable="true" ondragstart="{!c.dragStart}" data-contactid="{!contact.Id}" style="font-size: larger;">{!contact.Name}</li>
+                    </aura:iteration>
+                </aura:set>
+            </aura:if>
+        </ul>
+    </div>
 </aura:component>
